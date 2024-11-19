@@ -1,0 +1,112 @@
+1) created tutorial.ts file
+
+2) we need to first install typescript (here we installing it globally)
+npm install -g typescript
+
+3) type below command to generate tsconfig.json file which will have details on the configuration like ts version, and many more
+you can there change the strict to false if you dont want to type check the variables,but that is actually '
+going against what we intended to use ts for. you can try it for quick coding cases where you want to ignore type
+
+tsc --init
+
+4)various type annotation in ts
+in JS => let id = 5
+but in TS we have to specify type like below 
+
+let id:number = 5;
+let company:string = "Acme"
+let isPublished:boolean = true;
+let lang:String[] = ["eng","hindi","kan"];
+let ids:number[] = [1,2,3,4,5];
+
+any => use any in only extreme scenarios where you don't know the type
+let x:any = 'Praj';   ====> use any if you want to consider any type, should be avoided
+let data:any[] = ["Praj",33,true]; 
+
+
+==================
+
+5) how to run a ts function
+if we run ts file directly in terminal eg: node tutorial.ts this wont run,because node only runs js files,so we convert the ts file to js using tsc and then run the js file
+
+create a function, the parameters should have the type and the return type should also be specified if you want to be specific
+
+to run ts file first in terminal type,this command is to buld =>  tsc 
+this will create a js file(tutorial.js) of the ts file(tutorial.ts) and then run the js file ,for example =>  tutorial.js
+this will give the output
+
+CODE:
+const concatenate = (a :string,b :string) : string =>{
+    return a+b;
+}
+console.log(concatenate("Praj","Yog"));
+console.log(concatenate("5","10"));
+
+=====================
+6)creating objects using TS => we use "INTERFACE"
+
+interface UserInterface  {
+    id : number,
+    name : string,
+    age:number
+}
+
+const User:UserInterface = {
+    id : 10,
+    name : "Yog",
+    age:73
+}
+
+User.age = "a"; this will give an error because age is number,
+you can change type by using interface and connect that interface to object
+
+we are saying User has type UserInterface
+
+in the UserInferace you have specified type of all the keys but you dont want to enter a particular key in the object,
+if you know a particluar key of an object can be optional the  you need to add a ? next to the key in the 
+userInterface saying that key is oprtional in the object. if you dont specify the ? and 
+dont specify a key in the object, then it will throw an error. check example below
+
+interface UserInterface  {
+    id : number,
+    name : string,
+    age?:number
+}
+
+const User:UserInterface = {
+    id : 10,
+    name : "Yog",
+
+}
+==================
+
+7) Passing functions in the object
+
+interface UserInterfacess  {
+    id : number;
+    name : string;
+    ages?:number;
+    greet(message:string):void
+}
+
+const Userss:UserInterfacess = {
+    id : 10,
+    name : "Yog",
+  greet(message){
+    console.log(message)
+  }
+}
+
+Userss.greet("Hello");
+
+===================================
+
+Union
+
+Intersection
+
+Enums
+
+Generic types
+
+ReadOnly
